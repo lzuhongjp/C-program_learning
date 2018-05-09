@@ -1,34 +1,35 @@
 时间转换（MOOC的作业）：
+
 #include<stdio.h>
-#include<stdbool.h>
-
-
 int time_convert(int bjt){
     int time,hours,minute;
-    if (bjt<100){
-    hours = 16;
-    time = hours *100 + bjt;}
-    else if (100<=bjt && bjt<1000){
+    
     hours = bjt/100;
-        if (hours>=8){
-            hours -=8;
-        }
-        else {
-            hours = hours + 16;
-        }
-    minute = bjt%100;
-    time = hours*100 + minute;}
-    else {
-        hours = bjt/100;
-        minute = bjt%100;
-        time = (hours-8)*100 + minute;
+    minute = bjt % 100;
+    if (hours<8){
+        hours = hours + 16;
     }
+    else {
+        hours-= 8;
+    }
+    
+    if (hours==0 && minute<10){
+        time = minute;
+    }
+    else if(minute < 10){
+        time = hours * 100 + minute;
+    }
+    else{
+        time = hours * 100 + minute;
+    }
+    
     return time;
 }
 
 int main(){
-    int utime;
-    utime = time_convert(1124);
-    printf("utime=%d", utime);
+    int utime,btj;
+    scanf("%d", &btj);
+    utime = time_convert(btj);
+    printf("%d", utime);
     return 0;
 }
