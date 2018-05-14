@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<math.h>
+
+
+int main(){
+    int a,b;
+    int i,label=200;
+    const int length=200;
+    int num[length];
+    scanf("%d/%d",&a,&b);
+    for(i=0;i<length;i++){
+        
+        if (a==0){
+            label=i;
+            break;
+        }
+        num[i] = a * 10 / b;
+        a =a * 10 % b;
+    }
+    printf("0.",num);
+    for(i=0;i<label;i++){
+        printf("%d",num[i]);
+    }
+    
+}
